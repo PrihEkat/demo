@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/test
+    username: katya
+    password: 1808
+    #separator: ^;
+    #initialization-mode: always
+---
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+---
+logging:
+  level:
+    org:
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: DEBUG
