@@ -21,6 +21,6 @@ public class ResourceContainer extends AbstractEntity {
     private String name;
 
     @Column(nullable = false)
-    private String weight;
+    private Long weight;
 }
 

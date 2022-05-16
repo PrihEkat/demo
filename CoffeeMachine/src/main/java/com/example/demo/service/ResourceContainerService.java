@@ -45,4 +45,11 @@ public class ResourceContainerService implements CommonService<ResourceContainer
     public ResourceContainer getById(Long id) {
         return repository.getById(id);
     }
+
+    public void recalculate(ResourceContainer resourceContainer) {
+        ResourceContainer resourceContainerDb = repository.getById(resourceContainer.getId());
+        final Long newWeight = resourceContainerDb.getWeight() - resourceContainer.getWeight();
+        resourceContainerDb.setWeight(newWeight);
+        repository.saveAndFlush(resourceContainerDb);
+    }
 }
