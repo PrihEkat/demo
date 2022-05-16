@@ -13,4 +13,4 @@
         - браузер обращается к серверу, проверяет наличие достаточного количества воды для приготовления напитка (прерывает выполнение программы и выводит сообщение об ошибке, если воды недостаточно). Обращение от Browser к ResourceContainerController, метод getResource(ResourceContainer water);
         - браузер обращается к серверу, запускает процесс приготовления кофе. Обращение от Browser к CoffeeMakerController, метод create(CoffeeMaker coffeeMaker);
         - браузер отдает напиток пользователю.
-![Image alt](https://github.com/PrihEkat/demo/blob/master/diagram.png)
+![Image alt](https://github.com/PrihEkat/demo/blob/master/img/diagram.png)
