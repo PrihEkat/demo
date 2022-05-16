@@ -60,7 +60,6 @@ public class ResourceContainerController implements CommonController<ResourceCon
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         final ResourceContainer resourceContainerDb = service.getById(resourceContainerId);
-        final boolean f = resourceContainerDb.getWeight() > resourceContainer.getWeight();
         if (resourceContainerDb.getWeight() > resourceContainer.getWeight()) {
             service.recalculate(resourceContainer);
             return new ResponseEntity<>(HttpStatus.OK);
