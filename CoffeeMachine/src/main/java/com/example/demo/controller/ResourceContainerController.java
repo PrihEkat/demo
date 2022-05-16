@@ -52,4 +52,19 @@ public class ResourceContainerController implements CommonController<ResourceCon
         ResourceContainer resourceContainer = service.getById(id);
         return new ResponseEntity<>(resourceContainer, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Void> getResource(ResourceContainer resourceContainer) {
+        final Long resourceContainerId = resourceContainer.getId();
+        if (!service.search(resourceContainerId)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        final ResourceContainer resourceContainerDb = service.getById(resourceContainerId);
+        final boolean f = resourceContainerDb.getWeight() > resourceContainer.getWeight();
+        if (resourceContainerDb.getWeight() > resourceContainer.getWeight()) {
+            service.recalculate(resourceContainer);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 }
